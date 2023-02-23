@@ -1,9 +1,15 @@
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterContactAction } from 'redux/filterSlice';
 import s from '../Filter/Filter.module.scss';
 
-export function Filter({ onChangeFilter }) {
+export function Filter() {
   const value = useSelector(state => state.contacts.filter);
+  const dispatch = useDispatch();
+
+  const onChangeFilter = e => {
+    dispatch(filterContactAction(e.target.value));
+  };
+
   return (
     <div className={s.container}>
       <h3 className={s.title}>Find contacts by name</h3>
@@ -18,7 +24,3 @@ export function Filter({ onChangeFilter }) {
     </div>
   );
 }
-
-Filter.propTypes = {
-  onChangeFilter: PropTypes.func.isRequired,
-};
