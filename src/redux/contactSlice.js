@@ -7,22 +7,12 @@ const initialState = {
     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ],
-  name: '',
-  number: '',
 };
 
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: initialState,
   reducers: {
-    setName: (state, action) => {
-      state.name = action.payload;
-    },
-
-    setNumber: (state, action) => {
-      state.number = action.payload;
-    },
-
     addContactAction(state, action) {
       state.contacts.push(action.payload);
     },
